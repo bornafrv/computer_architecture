@@ -1,0 +1,21 @@
+module datapath (input clk, rst, regwrite, memwrite, ALUsrc, input [2:0] ALUcontrol, Imsrc, input[1:0] resultsrc, pcsrc, 
+                output zero, sign, output reg [6:0] opc, f7, output reg [2:0] f3);
+    
+    wire [31:0] pcin, pcout, inst, data1, data2, dmemout, aluin2, aluout, Imout, addout1, addout2;
+    PC pc(clk, rst, pcin, pcout);
+    Instmem imem(pcout, inst);
+    Registerfile RF(clk, regwrite, inst[19:15], inst[24:20], inst[11:7], resultsrc, data1, data2);
+    ALU alu(data1, aluin2, ALUcontrol, aluout, zero, sign);
+    Datamem dmem(clk, memwrite, aluout, data2, dmemout);
+    Immextend imext(inst[31:7], Imsrc, Imout);
+    Adder adder1(pcout, Imout, addout1);
+    Adder adder2(pcout, 32'd4, addout2);
+    Mux2to1 mux2(data2, Imout, ALUsrc, aluin2);
+    Mux3to1 mux3(addout2, addout1, aluout, pcsrc, pcin);
+    Mux4to1 mux4(aluout, dmemout, addout2, Imout, resultsrc);
+
+    assign f3 = inst[14:12];
+    assign f7 = inst[31:25];
+    assign opc = inst[6:0];
+    
+endmodule

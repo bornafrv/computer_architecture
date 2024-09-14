@@ -1,0 +1,105 @@
+module PC (input clk, rst, input [31:0] in, output reg [31:0] out);
+    always @(posedge clk) begin
+        if(rst)
+            out <= 32'b0;
+        else
+            out <= in;
+    end
+endmodule
+
+module Instmem (input [31:0] pc, output [31:0] RD);
+    reg [7:0] mem [0:1023];
+    wire [31:0] adr;
+    assign adr = {pc[31:2], 2'b0};
+    initial $readmemh("instructions.mem", mem);
+    assign RD = {mem[adr+3], mem[adr+2], mem[adr+1], mem[adr]};
+endmodule
+
+module Datamem (input clk, WE, input [31:0] Adr, WD, output reg [31:0] RD);
+    reg [7:0] datamem [0:1023];
+    reg [31:0] adr;
+    assign adr = {Adr[31:2], 2'b0};
+    initial $readmemb("data.mem", datamem);
+    always @(posedge clk) begin
+        if(WE)
+           {datamem[adr+3], datamem[adr+2], datamem[adr+1], datamem[adr]} <= WD;
+    end
+    always @(Adr) begin
+        RD = {datamem[adr+3], datamem[adr+2], datamem[adr+1], datamem[adr]};
+    end
+endmodule
+
+module Registerfile (input clk, WE, input[4:0] A1, A2, A3, input[31:0] WD, output reg[31:0] RD1, RD2);
+    reg [31:0] regmem [0:31];
+    assign regmem[00000] = 32'b0;
+    always @(posedge clk) begin
+        if(WE)
+            if(A3 != 5'b0)
+                regmem[A3] <= WD;
+    end
+    always @(A1, A2) begin
+        RD1 = regmem[A1];
+        RD2 = regmem[A2];
+    end
+endmodule
+
+module ALU (input signed [31:0] A, B, input[2:0] control, output reg signed[31:0] Y, output zero, sign);
+    always @(A, B, control) begin
+        case (control)
+            3'b000: Y = A + B;
+            3'b001: Y = A - B;
+            3'b010: Y = A & B;
+            3'b011: Y = A | B;
+            3'b100: Y = A ^ B;
+            3'b101: Y = (A < B) ? 32'd1 : 32'b0;
+            3'b110: Y = ({1'b0, A} < {1'b0, B}) ? 32'd1 : 32'b0;
+            default: Y = 32'b0;
+        endcase
+    end
+    assign zero = ~|Y;
+    assign sign = Y[31];
+endmodule
+
+module Adder (input signed [31:0] A, B, output signed [31:0] Y);
+    assign Y = A + B;
+endmodule
+
+module Mux2to1 (input[31:0] A, B, input control, output reg[31:0] Y);
+    assign Y = control ? B : A;
+endmodule
+
+module Mux3to1 (input[31:0] A, B, C, input[1:0] control, output reg[31:0] Y);
+    always @(A, B, C, control) begin
+        case(control)
+        2'b00: Y = A;
+        2'b01: Y = B;
+        2'b10: Y = C;
+        default: Y = 32'b0;
+        endcase
+    end
+endmodule
+
+module Mux4to1 (input[31:0] A, B, C, D, input[1:0] control, output reg[31:0] Y);
+        always @(A, B, C, D, control) begin
+        case(control)
+        2'b00: Y = A;
+        2'b01: Y = B;
+        2'b10: Y = C;
+        2'b11: Y = D;
+        default: Y = 32'b0;
+        endcase
+    end
+endmodule
+
+module Immextend (input[24:0] in, input[2:0] select, output reg[31:0] out);
+    always @(in, select) begin
+        case(select)
+            3'b000: out = {{20{in[31]}} , in[31:20]}; //I
+			3'b001: out = {{20{in[31]}} , in[31:25] , in[11:7]}; //S
+			3'b010: out = {{20{in[31]}} , in[7] , in[30:25] , in[11:8] , 1'b0}; //B
+			3'b011: out = {{12{in[31]}} , in[19:12] , in[20] , in[30:21] , 1'b0}; //J
+			3'b100: out = {in[31:12] , {12{0}}}; //U
+            default: out = 32'b0;
+        endcase
+    end
+endmodule
