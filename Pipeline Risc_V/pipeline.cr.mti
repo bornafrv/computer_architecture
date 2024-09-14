@@ -1,0 +1,81 @@
+C:/Users/Asus/Desktop/pipeline_new/register.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/register.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module DFF
+-- Compiling module Register
+-- Compiling module first_regs
+-- Compiling module second_regs
+-- Compiling module third_regs
+-- Compiling module fourth_regs
+
+Top level modules:
+	first_regs
+	second_regs
+	third_regs
+	fourth_regs
+
+} {} {}} C:/Users/Asus/Desktop/pipeline_new/HazardUnit.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/HazardUnit.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module HazardUnit
+
+Top level modules:
+	HazardUnit
+
+} {} {}} C:/Users/Asus/Desktop/pipeline_new/components.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/components.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Adder
+-- Compiling module MUX2to1
+-- Compiling module MUX3to1
+-- Compiling module MUX4to1
+-- Compiling module Register_File
+-- Compiling module ALU
+-- Compiling module Immediate_Extend
+-- Compiling module Instruction_Memory
+-- Compiling module Data_Memory
+
+Top level modules:
+	Adder
+	MUX2to1
+	MUX3to1
+	MUX4to1
+	Register_File
+	ALU
+	Immediate_Extend
+	Instruction_Memory
+	Data_Memory
+
+} {} {}} C:/Users/Asus/Desktop/pipeline_new/datapath.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/datapath.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module datapath
+
+Top level modules:
+	datapath
+
+} {} {}} C:/Users/Asus/Desktop/pipeline_new/toplevel.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/toplevel.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module toplevel
+
+Top level modules:
+	toplevel
+
+} {} {}} C:/Users/Asus/Desktop/pipeline_new/DCD.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/DCD.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module DCD
+
+Top level modules:
+	DCD
+
+} {} {}} C:/Users/Asus/Desktop/pipeline_new/controller.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/controller.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module controller
+
+Top level modules:
+	controller
+
+} {} {}} C:/Users/Asus/Desktop/pipeline_new/testbench.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/pipeline_new/testbench.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module testbench
+
+Top level modules:
+	testbench
+
+} {} {}}
