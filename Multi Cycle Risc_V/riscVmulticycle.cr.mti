@@ -1,0 +1,57 @@
+C:/Users/Asus/Desktop/multicycle/testbenchCTRL.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/multicycle/testbenchCTRL.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module testbenchCTRL
+
+Top level modules:
+	testbenchCTRL
+
+} {} {}} C:/Users/Asus/Desktop/multicycle/components.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/multicycle/components.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module register
+-- Compiling module Datamem
+-- Compiling module Registerfile
+-- Compiling module ALU
+-- Compiling module Mux2to1
+-- Compiling module Mux3to1
+-- Compiling module Mux4to1
+-- Compiling module Immextend
+
+Top level modules:
+	register
+	Datamem
+	Registerfile
+	ALU
+	Mux2to1
+	Mux3to1
+	Mux4to1
+	Immextend
+
+} {} {}} C:/Users/Asus/Desktop/multicycle/toplevel.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/multicycle/toplevel.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module toplevel
+
+Top level modules:
+	toplevel
+
+} {} {}} C:/Users/Asus/Desktop/multicycle/datapath.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/multicycle/datapath.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module datapath
+
+Top level modules:
+	datapath
+
+} {} {}} C:/Users/Asus/Desktop/multicycle/controller.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/multicycle/controller.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module controller
+
+Top level modules:
+	controller
+
+} {} {}} C:/Users/Asus/Desktop/multicycle/testbenchTL.v {1 {vlog -work work -stats=none C:/Users/Asus/Desktop/multicycle/testbenchTL.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module testbenchTL
+
+Top level modules:
+	testbenchTL
+
+} {} {}}

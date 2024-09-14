@@ -1,0 +1,319 @@
+m255
+K4
+z2
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Asus/Desktop/riscVporject
+vALU
+Z0 !s110 1716307184
+!i10b 1
+!s100 ^:1MUXmL?dGL0S[U@VT;`0
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+In;_=FF1e<e_nE_ALDS[U53
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dC:/Users/Asus/Desktop/multicycle
+Z4 w1716283863
+Z5 8C:/Users/Asus/Desktop/multicycle/components.v
+Z6 FC:/Users/Asus/Desktop/multicycle/components.v
+!i122 105
+L0 32 16
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1716307184.000000
+Z9 !s107 C:/Users/Asus/Desktop/multicycle/components.v|
+Z10 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Asus/Desktop/multicycle/components.v|
+!i113 1
+Z11 o-work work
+Z12 tCvgOpt 0
+n@a@l@u
+vcontroller
+R0
+!i10b 1
+!s100 b?k]V0;12WTRjZQf^EbTo1
+R1
+IG4iSi2fU]nUhEdG2Q@j6D0
+R2
+R3
+w1716298954
+8C:/Users/Asus/Desktop/multicycle/controller.v
+FC:/Users/Asus/Desktop/multicycle/controller.v
+!i122 107
+L0 1 98
+R7
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/Asus/Desktop/multicycle/controller.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Asus/Desktop/multicycle/controller.v|
+!i113 1
+R11
+R12
+vDatamem
+R0
+!i10b 1
+!s100 dXzaORff_mV7I?l;2k6iU1
+R1
+IYVWE<iKNaFVKnOzNHE=L;1
+R2
+R3
+R4
+R5
+R6
+!i122 105
+L0 10 9
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@datamem
+vdatapath
+R0
+!i10b 1
+!s100 AJ5e]BOfX0^EzC3G9WZlk1
+R1
+I59>QIjC`WSlN@6oT89TM23
+R2
+R3
+w1716297725
+8C:/Users/Asus/Desktop/multicycle/datapath.v
+FC:/Users/Asus/Desktop/multicycle/datapath.v
+!i122 106
+L0 1 29
+R7
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/Asus/Desktop/multicycle/datapath.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Asus/Desktop/multicycle/datapath.v|
+!i113 1
+R11
+R12
+vImmextend
+R0
+!i10b 1
+!s100 :09E@;UbZh[iX_fijAY?D3
+R1
+IQRWCKImPfCbg[e9Pf9<<=1
+R2
+R3
+R4
+R5
+R6
+!i122 105
+L0 66 7
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@immextend
+vMux2to1
+R0
+!i10b 1
+!s100 A]_V>>_5aS8FN:agaZLam2
+R1
+IJf^:ZEEgdISK2kmzh`OkE1
+R2
+R3
+R4
+R5
+R6
+!i122 105
+L0 49 3
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@mux2to1
+vMux3to1
+R0
+!i10b 1
+!s100 fjQn?BNY;kHI:RIC1ZSaX3
+R1
+IgCTbPaXm=nW@OKdhNlOVo3
+R2
+R3
+R4
+R5
+R6
+!i122 105
+L0 53 5
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@mux3to1
+vMux4to1
+R0
+!i10b 1
+!s100 NlAzE7?PzHkNJo_6R3K?>0
+R1
+IiQ5YlnJ[FQCQ64F=z0S1K0
+R2
+R3
+R4
+R5
+R6
+!i122 105
+L0 59 6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@mux4to1
+vregister
+R0
+!i10b 1
+!s100 aT>j;]kkYaAX:6bQMU0931
+R1
+IV[C8WnPkW__i]KBeJFL5?1
+R2
+R3
+R4
+R5
+R6
+!i122 105
+L0 1 8
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vRegisterfile
+R0
+!i10b 1
+!s100 WQ0lQkBZ7P90D_F;38z_01
+R1
+I:Kh5eNZV>YD<PVlHb1e8i2
+R2
+R3
+R4
+R5
+R6
+!i122 105
+L0 20 11
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@registerfile
+vtestbenchCTRL
+R0
+!i10b 1
+!s100 [6]Qn2RE=?lFVa3Tl9a^j3
+R1
+IJ5`lG=2kSMQDz:RJ3V]3R2
+R2
+R3
+w1716301711
+8C:/Users/Asus/Desktop/multicycle/testbenchCTRL.v
+FC:/Users/Asus/Desktop/multicycle/testbenchCTRL.v
+!i122 109
+L0 2 58
+R7
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/Asus/Desktop/multicycle/testbenchCTRL.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Asus/Desktop/multicycle/testbenchCTRL.v|
+!i113 1
+R11
+R12
+ntestbench@c@t@r@l
+vtestbenchTL
+!s110 1716325368
+!i10b 1
+!s100 7dZE^F5E>X^k50[ZA3gZo2
+R1
+ILYA8Nh:`Ek`5Gj4fHl:L62
+R2
+R3
+w1716325366
+8C:/Users/Asus/Desktop/multicycle/testbenchTL.v
+FC:/Users/Asus/Desktop/multicycle/testbenchTL.v
+!i122 111
+L0 1 12
+R7
+r1
+!s85 0
+31
+!s108 1716325368.000000
+!s107 C:/Users/Asus/Desktop/multicycle/testbenchTL.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Asus/Desktop/multicycle/testbenchTL.v|
+!i113 1
+R11
+R12
+ntestbench@t@l
+vtoplevel
+R0
+!i10b 1
+!s100 CQfj[?0:R?PA0T<IMz?5U3
+R1
+IFb[TVELKQ;C2>Qie5f_``1
+R2
+R3
+w1716306462
+8C:/Users/Asus/Desktop/multicycle/toplevel.v
+FC:/Users/Asus/Desktop/multicycle/toplevel.v
+!i122 108
+L0 1 22
+R7
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/Asus/Desktop/multicycle/toplevel.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Asus/Desktop/multicycle/toplevel.v|
+!i113 1
+R11
+R12

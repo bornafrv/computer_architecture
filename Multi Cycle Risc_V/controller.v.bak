@@ -1,0 +1,98 @@
+module controller  (
+    input clk, rst, zero, sign,
+    input [6:0] opc, f7,
+    input [2:0] f3,
+    output pc_w, adr_src, oldpc_w, memwrite, IR_w, regwrite,
+    output [2:0] imm_src, ALUcontrol, 
+    output [1:0] result_src, Alu_srcA, Alu_srcB
+);
+    reg beq, bne, bge, blt, pc_update;
+    reg [1:0] ALU_op;
+    reg [3:0] ps, ns;
+
+    parameter [3:0] A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6,
+    H = 7, I = 8, J = 9, K = 10, L = 11, M = 12;
+
+    always @(posedge clk, posedge rst) begin
+        if(rst)
+            ps <= A;
+        else
+            ps <= ns;
+    end
+
+    always @(ps, opc, f3)begin
+        {pc_update, adr_src, oldpc_w, memwrite, IR_w, regwrite, beq, bne, bge, blt} = 10'b0;
+        imm_src = 3'b0;
+        result_src = 2'b0; Alu_srcA = 2'b0; Alu_srcB = 2'b0; ALU_op = 2'b0;
+        case (ps)
+            A: begin Alu_srcA = 2'd0; Alu_srcB = 2'd2; result_src = 2'd2; pc_update = 1; adr_src = 0; IR_w = 1; oldpc_w = 1; ALU_op = 2'b00; end
+            B: begin Alu_srcA = 2'd1; Alu_srcB = 2'd1; imm_src = (opc == 7'd99) ? 3'b010 : 3'b011; ALU_op = 2'b00; end
+            C: begin Alu_srcA = 2'd2; Alu_srcB = 2'd0; ALU_op = 2'b10; end
+            D: begin result_src = 2'd0; regwrite = 1; end
+            E: begin Alu_srcA = 2'd2; Alu_srcB = 2'd1; imm_src = 3'b001; ALU_op = 2'b00; end
+            F: begin result_src = 2'd0; adr_src = 1; memwrite = 1; end
+            G: begin Alu_srcA = 2'd2; Alu_srcB = 2'd1; imm_src = 3'b000; ALU_op = 2'b00; end
+            H: begin result_src = 2'd0; adr_src = 1; end
+            I: begin result_src = 2'd1; regwrite = 1; end
+            J: begin Alu_srcA = 2'd2; Alu_srcB = 2'd1; imm_src = 3'b000; ALU_op = 2'b10;end
+            K: begin pc_update = 1; result_src = 2'd0; Alu_srcA = 2'd1; Alu_srcB = 2'd2; ALU_op = 2'b00;end
+            L: begin result_src = 2'd3; regwrite = 1; imm_src = 3'b100; end
+            M: begin Alu_srcA = 2'd2; Alu_srcB = 2'd0; result_src = 2'd0; ALU_op = 2'b01;
+                beq = (f3 == 3'd0) ? 1 : 0; bne = (f3 == 3'd1) ? 1 : 0; blt = (f3 == 3'd4) ? 1 : 0; bge = (f3 == 3'd5) ? 1 : 0; end
+            default:;
+        endcase
+    end
+
+    assign pc_w = pc_update | ((beq & zero) | (bne & (~zero)) | (blt & sign) | (bge & (~sign)) | (bge & zero));
+
+    always @(f3, f7, ALU_op)begin
+        ALUcontrol = 3'b000;
+        if(ALU_op == 2'b00)
+            ALUcontrol = 3'b000;
+        else if(ALU_op == 2'b01) 
+            ALUcontrol = 3'b001;
+        else if(ALU_op == 2'b10)
+            if((f3 == 3'd0) & (f7 == 7'd0)) //add
+                ALUcontrol = 3'b000;
+            else if((f3 == 3'd0) & (f7 == 7'd32)) //sub
+                ALUcontrol = 3'b001;
+            else if((f3 == 3'd7) & (f7 == 7'd0)) //and
+                ALUcontrol = 3'b010;
+            else if((f3 == 3'd6) & (f7 == 7'd0)) //or
+                ALUcontrol = 3'b011;
+            else if((f3 == 3'd2) & (f7 == 7'd0)) //slt
+                ALUcontrol = 3'b101;
+            else if((f3 == 3'd3) & (f7 == 7'd0)) //sltu
+                ALUcontrol = 3'b110;
+            else if(f3 == 3'd0) //addi
+                ALUcontrol = 3'b000;
+            else if(f3 == 3'd4) //xori
+                ALUcontrol = 3'b100;
+            else if(f3 == 3'd6) //ori
+                ALUcontrol = 3'b011;
+            else if(f3 == 3'd2) //slti
+                ALUcontrol = 3'b101;
+            else if(f3 == 3'd3) //sltiu
+                ALUcontrol = 3'b110;
+    end
+
+    always @(opc) begin
+        ns = A;
+        case(ps) 
+            A: ns = B;
+            B: ns = (opc == 7'd51) ? C : (opc == 7'd99) ? M : (opc == 7'd3) ? G: (opc == 7'd35) ? E: (opc == 7'd19) ? J : (opc == 7'd111) ? K : (opc == 7'd55) ? L : (opc == 7'd103) ? G: B;
+            C: ns = D;
+            D: ns = A; 
+            E: ns = F;
+            F: ns = A;
+            G: ns = (opc == 7'd3) ? H : (opc == 7'd103) ? K: G;
+            H: ns = I;
+            I: ns = A;
+            J: ns = D;
+            K: ns = D;
+            L: ns = A;
+            M: ns = A;
+            default: ns = A;
+        endcase
+	end
+endmodule
