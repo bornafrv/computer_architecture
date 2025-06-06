@@ -4,14 +4,6 @@
 This project focuses on **Computer Arithmetic**, specifically the design and simulation of a **10-bit division circuit** using **SystemVerilog**.  
 The goal is to create a sequential division module that computes the **quotient** and **remainder** for 10-bit inputs, while also handling exceptional cases like **division by zero** and **overflow**.
 
----
-
-## 📂 Contents
-
-- 📄 `Instruction.pdf` – Project instructions and specifications  
-- 📄 `Report.doc` – Documentation of the design, implementation, and simulation results  
-- 📁 `divider.sv` – SystemVerilog module implementing the division circuit  
-- 📁 `testbench.sv` – Testbench used for simulation and verification
 
 ---
 
